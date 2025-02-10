@@ -1,0 +1,26 @@
+{
+  "name": "puppeteer-di-solid-ts",
+  "version": "1.0.0",
+  "description": "Puppeteer Web Crawler with Typescript, Dependency Injection and SOLID Principles",
+  "main": "dist/puppeteer.js",
+  "type": "module",
+  "scripts": {
+    "start": "npm run raw src/puppeteer.ts",
+    "start:remote": "docker compose up -d &&REMOTE_BROWSER=localhost:3030 npm run raw src/puppeteer.ts",
+    "raw": "node --experimental-strip-types --experimental-transform-types --trace-warnings",
+    "prebuild":"rm -rf ./dist && npm run docs",
+    "build": "npx tsc -p .",
+    "docs": "npx typedoc --name puppeler --tsconfig ./tsconfig.json --out ./dist/ ./src/puppeteer.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "20.13.0",
+    "typedoc": "0.27.7",
+    "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "puppeteer": "22.10.0"
+  }
+}

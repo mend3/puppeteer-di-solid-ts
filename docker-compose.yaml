@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  browserless:
+    image: browserless/chrome
+    container_name: browserless
+    ports:
+      - "3030:3000"
+    environment:
+      WORKSPACE_DIR: "/data"
+      MAX_CONCURRENT_SESSIONS: 10       # Maximum concurrent browser sessions
+      PREBOOT_CHROME: "true"            # Preboots Chrome for faster responses
+      ENABLE_DEBUGGER: "false"          # Disables the built-in debugger
+      KEEP_ALIVE: "true"                # Keeps sessions alive by default
+      DEFAULT_BLOCK_ADS: "true"         # Blocks ads in all sessions
+    deploy:
+      resources:
+        limits:
+          cpus: "1"                   # Limits the container to 1 CPU core
+          memory: 1g                  # Limits the container to 1 GB of memory
